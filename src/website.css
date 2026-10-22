@@ -1,0 +1,805 @@
+/* Website layouts. Animation artwork and shared design tokens live in styles.css. */
+.website-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  max-width: 80rem;
+  margin: auto;
+  padding: clamp(2rem, 5vw, 4.5rem) 1.5rem;
+}
+.website-hero-copy {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+}
+.website-eyebrow,
+.auth-eyebrow {
+  color: var(--primary);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.website-eyebrow {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.website-hero h1 {
+  margin-top: 1.25rem;
+  font-size: clamp(2.6rem, 4.8vw, 4.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.055em;
+}
+.website-hero h1 span {
+  color: var(--primary);
+}
+.website-hero-description {
+  max-width: 29rem;
+  margin-top: 1.25rem;
+  color: var(--muted-foreground);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.website-hero .home-search-panel {
+  margin-top: 1.75rem;
+  box-shadow: 0 12px 30px #123d3210;
+  border-color: var(--border);
+  border-radius: 1rem;
+}
+.website-hero .trip-filters {
+  grid-template-columns: minmax(0, 1.2fr) repeat(2, minmax(0, 1fr)) minmax(0, 1.1fr);
+}
+.website-hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+}
+.website-hero-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+}
+.website-hero-links a:first-child {
+  font-weight: 700;
+  color: var(--primary);
+}
+.website-hero-links a:last-child {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+.website-hero-photo {
+  position: relative;
+  min-width: 0;
+  height: 36rem;
+  max-height: 75vh;
+  border-radius: 10rem 10rem 1.5rem 1.5rem;
+  overflow: hidden;
+  background: #183d3b;
+}
+.website-hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #0b2428d9, transparent 65%);
+}
+.website-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% center;
+}
+.hero-photo-label {
+  position: absolute;
+  z-index: 1;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  padding: 0.65rem 1rem;
+  border-radius: 2rem;
+  background: #ffffffed;
+  color: #173b37;
+  font-size: 0.7rem;
+}
+.hero-photo-caption {
+  position: absolute;
+  z-index: 1;
+  bottom: 2.5rem;
+  left: 2rem;
+  right: 2rem;
+  color: white;
+}
+.hero-photo-caption span {
+  display: block;
+  font-size: 0.85rem;
+}
+.hero-photo-caption strong {
+  display: block;
+  margin-top: 0.45rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  letter-spacing: -0.04em;
+}
+.website-promises {
+  max-width: 77rem;
+  margin: 0 auto;
+  padding: 1.75rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-block: 1px solid var(--border);
+  gap: 1rem;
+}
+.website-promises > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+}
+.website-promises svg {
+  color: var(--primary);
+  flex: none;
+  width: 1.5rem;
+}
+.website-promises strong,
+.website-promises small {
+  display: block;
+}
+.website-promises strong {
+  font-size: 0.8rem;
+}
+.website-promises small {
+  font-size: 0.68rem;
+  color: var(--muted-foreground);
+  margin-top: 0.25rem;
+}
+.parking-catalog {
+  padding-top: 4rem;
+}
+.parking-card {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+@media (hover: hover) {
+  .parking-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px #123d3212;
+  }
+}
+
+/* Content fits normal phone/desktop screens; small heights or zoom can still scroll. */
+.auth-shell {
+  min-height: 100dvh;
+}
+.auth-shell main {
+  display: grid;
+  align-content: center;
+  padding: 1.25rem;
+}
+.auth-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 64rem;
+  margin: auto;
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: var(--card);
+  box-shadow: 0 20px 60px #164b410d;
+}
+.auth-art {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(150deg, var(--secondary), var(--background));
+}
+.auth-art h2 {
+  margin-top: 0.8rem;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+.auth-art-copy > p:last-child {
+  margin-top: 0.8rem;
+  max-width: 22rem;
+  color: var(--muted-foreground);
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+.auth-creatures {
+  margin: 1rem 0 0.5rem;
+}
+.auth-creatures .auth-crew {
+  margin: 0 auto;
+}
+.auth-creatures .crew-stage {
+  transform: none;
+  margin-bottom: 0;
+}
+.auth-art-caption {
+  color: var(--primary);
+  font-size: 0.7rem;
+  text-align: center;
+}
+.auth-form-panel {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 2rem 2.5rem;
+}
+.auth-form-content {
+  width: 100%;
+  animation: form-arrive 350ms ease both;
+}
+.auth-compact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.auth-form-title {
+  position: relative;
+}
+.auth-form-icon {
+  display: grid;
+  place-items: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  background: var(--secondary);
+}
+.auth-form-icon svg {
+  width: 1.15rem;
+}
+.auth-form-title h1,
+.auth-success h1 {
+  margin-top: 0.5rem;
+  font-size: clamp(1.7rem, 2.3vw, 2.2rem);
+  letter-spacing: -0.045em;
+  line-height: 1.15;
+}
+.auth-form-title > p:last-child {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+.auth-form-panel input,
+.auth-form-panel select {
+  min-height: 2.85rem;
+  width: 100%;
+  border-radius: 0.7rem;
+  background: var(--background);
+}
+.auth-step-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--primary);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.67rem;
+}
+.auth-role-choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.auth-role-choice button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+  font-size: 0.72rem;
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  cursor: pointer;
+}
+.auth-role-choice button[aria-pressed="true"] {
+  border-color: var(--primary);
+  background: var(--secondary);
+  color: var(--primary);
+  font-weight: 700;
+}
+.auth-role-choice svg {
+  width: 1rem;
+  flex: none;
+}
+.password-control {
+  position: relative;
+}
+.password-control input {
+  padding-right: 3.25rem;
+}
+.password-control button {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  color: var(--muted-foreground);
+}
+.password-control svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.auth-submit-row {
+  display: flex;
+  gap: 0.5rem;
+}
+.auth-submit-row button {
+  min-height: 2.85rem;
+  border-radius: 0.7rem;
+}
+.auth-submit {
+  flex: 1;
+  font-weight: 700;
+}
+.auth-registration-note {
+  font-size: 0.64rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+.auth-switch {
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.73rem;
+  color: var(--muted-foreground);
+}
+.auth-switch button {
+  min-height: 2.75rem;
+  color: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+}
+.auth-form-error {
+  border: 1px solid var(--destructive);
+  border-radius: 0.65rem;
+  padding: 0.65rem;
+  font-size: 0.75rem;
+  color: var(--destructive);
+}
+.auth-success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+.auth-success h1 {
+  margin: 0;
+}
+.auth-success > p[role="status"] {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--muted-foreground);
+}
+.auth-success > button {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+.auth-success-mark {
+  width: 4.5rem;
+  height: 4.5rem;
+  color: var(--primary);
+  overflow: visible;
+}
+.auth-success-mark circle {
+  fill: var(--secondary);
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-dasharray: 214;
+  animation: success-ring 550ms ease both;
+}
+.auth-success-mark path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 52;
+  animation: success-tick 400ms 350ms ease both;
+}
+@media (min-width: 768px) {
+  .auth-art {
+    justify-content: flex-start;
+  }
+  .auth-form-panel {
+    align-items: flex-start;
+  }
+  .auth-form-icon {
+    display: none;
+  }
+  .auth-art h2,
+  .auth-form-title h1 {
+    margin-top: 0.75rem;
+  }
+}
+@keyframes form-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes success-ring {
+  from {
+    stroke-dashoffset: 214;
+    transform: scale(0.85);
+    transform-origin: center;
+  }
+  to {
+    stroke-dashoffset: 0;
+    transform: scale(1);
+    transform-origin: center;
+  }
+}
+@keyframes success-tick {
+  from {
+    stroke-dashoffset: 52;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@media (max-width: 1100px) {
+  .website-hero {
+    gap: 2rem;
+  }
+  .website-hero-photo {
+    height: 33rem;
+  }
+  .website-promises {
+    margin-inline: 1.5rem;
+  }
+  .auth-art,
+  .auth-form-panel {
+    padding: 1.75rem;
+  }
+}
+@media (max-width: 1100px) {
+  .website-hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .website-hero-copy {
+    max-width: 42rem;
+    width: 100%;
+    margin: auto;
+  }
+  .website-hero h1 {
+    font-size: clamp(2.6rem, 7.5vw, 4rem);
+  }
+  .website-hero-photo {
+    height: 18rem;
+    border-radius: 1.5rem;
+  }
+  .website-hero-photo img {
+    object-position: center 60%;
+  }
+  .hero-photo-label {
+    left: 1.5rem;
+    top: 1.5rem;
+    transform: none;
+  }
+  .hero-photo-caption {
+    bottom: 1.5rem;
+    left: 1.5rem;
+  }
+  .website-promises {
+    gap: 1.25rem;
+  }
+  .website-promises > div {
+    align-items: flex-start;
+  }
+  .auth-page {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+  .auth-art {
+    padding: 1.5rem;
+  }
+  .auth-creatures .crew-stage {
+    transform: scale(0.85);
+    transform-origin: center top;
+    margin-bottom: -2rem;
+  }
+}
+@media (max-width: 767px) {
+  .site-header-inner {
+    height: 4rem;
+  }
+  .mobile-menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    max-height: calc(100dvh - 4rem);
+    box-shadow: 0 18px 30px #123d321a;
+  }
+  .workspace-shell .site-footer {
+    display: block;
+  }
+  .website-hero {
+    padding: 2rem 1rem 1.5rem;
+    gap: 1.5rem;
+  }
+  .website-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+  }
+  .website-hero h1 {
+    margin-top: 0.9rem;
+    font-size: clamp(2.65rem, 10.5vw, 4rem);
+  }
+  .website-hero-description {
+    margin-top: 1rem;
+    font-size: 0.83rem;
+    line-height: 1.75;
+  }
+  .website-hero .home-search-panel {
+    margin-top: 1.4rem;
+  }
+  .website-hero .trip-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+  .website-hero-links {
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+  }
+  .website-hero-photo {
+    height: 14rem;
+    border-radius: 1rem;
+  }
+  .hero-photo-label {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.6rem;
+  }
+  .hero-photo-caption {
+    left: 1rem;
+    bottom: 1.25rem;
+  }
+  .hero-photo-caption span {
+    font-size: 0.7rem;
+  }
+  .hero-photo-caption strong {
+    font-size: 1.6rem;
+  }
+  .website-promises {
+    margin-inline: 1rem;
+    padding-block: 1.25rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .website-promises > div {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .website-promises strong {
+    font-size: 0.74rem;
+  }
+  .website-promises small {
+    font-size: 0.66rem;
+    margin-top: 0.1rem;
+  }
+  .website-promises svg {
+    width: 1.25rem;
+  }
+  .parking-card {
+    display: block;
+  }
+  .parking-card-image {
+    aspect-ratio: 16/9;
+    height: auto;
+    min-height: 0;
+  }
+  .parking-image-price,
+  .parking-badges {
+    display: flex;
+  }
+  .parking-card-body {
+    padding: 1rem;
+  }
+  .parking-card-body h3 {
+    font-size: 1.15rem;
+  }
+  .parking-card-body h3 + p {
+    font-size: 0.78rem;
+  }
+  .parking-card-footer {
+    margin-top: 1rem;
+  }
+  .parking-card-footer > a {
+    font-size: 0.8rem;
+    min-height: 2.75rem;
+    align-content: center;
+  }
+  .parking-mobile-price {
+    display: none;
+  }
+  .auth-shell main {
+    padding: 1rem;
+    background: radial-gradient(ellipse at top, var(--secondary), var(--background) 70%);
+  }
+  .auth-page {
+    display: block;
+    max-width: 28rem;
+    border-radius: 1.25rem;
+  }
+  .auth-page > .auth-art {
+    display: none;
+  }
+  .auth-form-panel {
+    padding: 1.6rem 1.25rem;
+  }
+  .auth-form-title h1 {
+    font-size: 1.9rem;
+  }
+  .auth-form-panel input,
+  .auth-form-panel select {
+    font-size: 16px;
+    min-height: 2.8rem;
+  }
+  .auth-form-icon {
+    margin-bottom: 0.8rem;
+  }
+  .auth-compact-form {
+    gap: 0.85rem;
+  }
+  .auth-mode-up .auth-form-icon {
+    display: none;
+  }
+  .auth-mode-up .auth-form-title h1 {
+    font-size: 1.7rem;
+  }
+}
+@media (max-height: 750px) and (min-width: 768px) {
+  .auth-shell main {
+    padding: 1rem;
+  }
+  .auth-art,
+  .auth-form-panel {
+    padding: 1.5rem 2rem;
+  }
+  .auth-compact-form {
+    gap: 0.65rem;
+  }
+  .auth-form-icon {
+    display: none;
+  }
+  .auth-art h2 {
+    font-size: 2.25rem;
+  }
+  .auth-creatures .crew-stage {
+    transform: scale(0.8);
+    transform-origin: center top;
+    margin-bottom: -2.8rem;
+  }
+}
+@media (max-height: 700px) and (max-width: 767px) {
+  .auth-shell main {
+    padding: 0.65rem;
+  }
+  .auth-form-panel {
+    padding: 1.15rem;
+  }
+  .auth-compact-form {
+    gap: 0.6rem;
+  }
+  .auth-form-title h1 {
+    font-size: 1.65rem;
+  }
+  .auth-form-title > p:last-child {
+    margin-top: 0.4rem;
+    font-size: 0.73rem;
+  }
+  .auth-mode-up .auth-form-title > p:last-child {
+    display: none;
+  }
+  .auth-mode-up .auth-form-title .auth-eyebrow {
+    display: none;
+  }
+  .auth-mode-up .auth-form-title h1 {
+    margin-top: 0;
+  }
+  .auth-mode-up .auth-form-panel {
+    padding-block: 1rem;
+  }
+  .auth-mode-up .auth-compact-form {
+    gap: 0.5rem;
+  }
+  .auth-switch {
+    padding-top: 0.2rem;
+  }
+  .auth-registration-note {
+    font-size: 0.6rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .auth-form-content,
+  .auth-success-mark circle,
+  .auth-success-mark path {
+    animation: none;
+  }
+  .parking-card {
+    transition: none;
+  }
+}
+
+/* Tablet controls need room for native date/time widgets and full vehicle labels. */
+@media (min-width: 768px) and (max-width: 1100px) {
+  .website-hero .trip-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .website-hero .trip-filters > div:nth-child(2n) {
+    border-right: 0;
+  }
+  .website-hero .trip-filters > div {
+    min-width: 0;
+  }
+}
+.website-hero .field-control,
+.search-input-row input {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Keep each tablet journey step together, with its marker beside the full explanation. */
+@media (min-width: 768px) and (max-width: 1100px) {
+  .journey-guide {
+    padding: 3rem 2rem;
+  }
+  .journey-guide > div {
+    margin-top: 2.5rem;
+  }
+  .journey-guide h1 {
+    font-size: clamp(2.75rem, 5.5vw, 3.75rem);
+    line-height: 1.1;
+  }
+  .journey-guide article {
+    grid-template-columns: 3rem minmax(0, 1fr);
+    gap: 0.75rem 1.5rem;
+    padding-block: 2rem;
+    align-items: start;
+  }
+  .journey-guide article > div {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .journey-guide article h2 {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  .journey-guide article > p {
+    grid-column: 2;
+    grid-row: 2;
+    min-width: 0;
+    max-width: 42rem;
+  }
+}
