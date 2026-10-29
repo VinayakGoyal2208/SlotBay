@@ -17,6 +17,7 @@
 SlotBay is a responsive parking rental website that connects drivers with owners of unused private parking spaces. It helps people find parking near metro stations, offices and busy city locations, while giving owners a way to offer their available bays.
 
 The platform brings parking discovery, reservations, owner listings and administrator reviews into one website.
+Link - [SlotBay]{https://slot-bay-swart.vercel.app}
 
 ## ✨ Main features
 
